@@ -1,19 +1,9 @@
 require "net/http"
 require "uri"
 
-uri = URI('http://bast.pro/ok.html')
+uri = URI('http://bast.pro/ok1.html')
 res = Net::HTTP.get_response(uri)
-respond = res.code
 
-if respond.to_i == 200||201
-  puts res.code
-  puts res.message
-  return exit code = 1
-else
-	puts res.code
-	puts res.message
-	return exit code = 0
+if res.code.to_i != (200||201)
+  abort res.code + " " + res.message
 end
-
-
-#puts res.message    
